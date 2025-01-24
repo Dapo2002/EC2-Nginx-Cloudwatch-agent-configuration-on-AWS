@@ -1,0 +1,13 @@
+#! /bin/bash
+
+sudo su
+yum update -y
+amazon-linux-extras install nginx1.12
+chkconfig nginx on
+cd /usr/share/nginx/html
+chmod o+w /usr/share/nginx/html
+rm index.html
+wget https://www.free-css.com/assets/files/free-css-templates/download/page288/startup.zip
+unzip /usr/share/nginx/html/startup.zip
+sudo cp -R startup-website-template/* /usr/share/nginx/html/
+service nginx start
